@@ -18,6 +18,10 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
-
-
+	
+	<!-- 在 Spring 中定義一個 Hello 物件 (Hello 物件未來將統一由 Spring 平台來管理) -->
+	<bean id="hello" class="spring.core.session01.beans.Hello" />
+	
+	
+	
 </beans>
