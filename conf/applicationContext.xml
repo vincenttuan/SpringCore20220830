@@ -22,4 +22,6 @@
 	<!-- 在 Spring 中定義一個 Hello 物件 (Hello 物件未來將統一由 Spring 平台來管理) -->
 	<bean id="hello" class="spring.core.session01.beans.Hello" />
 	
+	<bean id="lotto" class="spring.core.session01.beans.Lotto" />
+	
 </beans>
