@@ -25,6 +25,6 @@
 	<bean id="lotto" scope="singleton" class="spring.core.session01.beans.Lotto" />
 	<bean id="lotto2" scope="singleton" class="spring.core.session01.beans.Lotto" />
 	
-	<bean id="lucky" class="spring.core.session01.beans.Lucky" />
+	<bean id="lucky" scope="prototype" class="spring.core.session01.beans.Lucky" />
 	
 </beans>
