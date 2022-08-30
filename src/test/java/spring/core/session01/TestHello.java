@@ -2,8 +2,10 @@ package spring.core.session01;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import spring.core.conf.SpringConfig;
 import spring.core.session01.beans.Hello;
 
 // 測試日期: 2022/08/30
@@ -27,6 +29,12 @@ public class TestHello {
 		Hello h3 = ctx.getBean("hello", Hello.class);
 		System.out.println(h3);
 		
+		// Java 配置: spring.core.conf.SpringConfig.java
+		ApplicationContext ctx2 = new AnnotationConfigApplicationContext(SpringConfig.class);
+		Hello h4 = ctx2.getBean(Hello.class);
+		Hello h5 = ctx2.getBean("hello", Hello.class);
+		System.out.println(h4);
+		System.out.println(h5);
 	}
 	
 }
