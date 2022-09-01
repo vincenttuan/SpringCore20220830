@@ -30,6 +30,17 @@
 	
 	<!-- session02 -->
 	<bean id="author1" class="spring.core.session02.beans.Author" />
-	
+	<bean id="author2" class="spring.core.session02.beans.Author">
+		<!-- 方法注入 -->
+		<property name="name"> <!-- name 會直接對應到 Author 的 setName() 方法 -->
+			<value>Vincent</value>
+		</property>
+		<property name="sex">
+			<value>M</value>
+		</property>
+		<property name="age">
+			<value>30</value>
+		</property>
+	</bean>
 			
 </beans>
