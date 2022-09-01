@@ -32,6 +32,8 @@ public class TestAuthor {
 		
 		Author author5 = ctx.getBean("author5", Author.class);
 		// author5 在配置檔中已經有預設注入資料(利用 c 建構子注入)
-		System.out.println(author5);	
+		System.out.println(author5);
+		
+		
 	}
 }
