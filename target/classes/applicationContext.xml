@@ -59,6 +59,19 @@
 	<bean id="author5" class="spring.core.session02.beans.Author"
 		  c:name="John" c:sex="M" c:age="46" />
 	
+	<!-- 無注入配置 -->
+	<bean id="book" class="spring.core.session02.beans.Book" />
+	
+	<!-- 在 book 中透過 ref 來配置 author -->
+	<bean id="book2" class="spring.core.session02.beans.Book">
+		<property name="name">
+			<value>Java</value>
+		</property>
+		<property name="price">
+			<value>500</value>
+		</property>
+		<property name="author" ref="author2" />
+	</bean>
 	
 				
 </beans>
