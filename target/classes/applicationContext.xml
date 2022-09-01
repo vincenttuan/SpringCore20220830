@@ -92,4 +92,12 @@
 	<bean id="book6" class="spring.core.session02.beans.Book"
 		  c:name="C++" c:price="250" p:author-ref="author5" />			
 	
+	<!-- session02.meterial -->
+	<!-- Paper, Color, Size -->
+	<bean id="color" class="spring.core.session02.beans.material.Color" p:name="白色" />
+	<bean id="size" class="spring.core.session02.beans.material.Size" p:name="A4" />
+	
+	<!-- 自動配置 -->
+	<bean id="paper" class="spring.core.session02.beans.material.Paper" p:id="101" autowire="byType" />
+	
 </beans>
