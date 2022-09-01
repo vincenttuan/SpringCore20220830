@@ -95,11 +95,16 @@
 	<!-- session02.meterial -->
 	<!-- Paper, Color, Size -->
 	<bean id="color" class="spring.core.session02.beans.material.Color" p:name="白色" />
+	<bean id="red" class="spring.core.session02.beans.material.Color" p:name="紅色" />
 	<bean id="size" class="spring.core.session02.beans.material.Size" p:name="A4" />
+	<bean id="b3" class="spring.core.session02.beans.material.Size" p:name="B3" />
+	
 	
 	<!-- 自動配置 -->
 	<!-- byType 的限制: 整個設定檔中只能有一個匹配型別, 若超過一個可匹配的型別就會發生錯誤 -->
+	<!--  
 	<bean id="paper" class="spring.core.session02.beans.material.Paper" p:id="101" autowire="byType" />
+	-->
 	
 	<!-- byName (根據 id) -->
 	<bean id="paper2" class="spring.core.session02.beans.material.Paper" p:id="102" autowire="byName" />
