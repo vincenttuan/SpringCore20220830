@@ -80,6 +80,12 @@
 		<constructor-arg index="2" ref="author3" /> <!-- ref 建構子注入 -->
 	</bean>
 	
+	<!-- 在 book 中透過 p:author-ref 來配置 author -->
+	<bean id="book4" class="spring.core.session02.beans.Book"
+		  p:name="Python" p:price="400" p:author-ref="author4" />
 	
-				
+	<!-- 在 book 中透過 c:author-ref 來配置 author -->
+	<bean id="book5" class="spring.core.session02.beans.Book"
+		  c:name="C++" c:price="250" c:author-ref="author5" />			
+	
 </beans>

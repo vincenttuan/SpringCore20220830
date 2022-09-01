@@ -10,6 +10,7 @@ import spring.core.session01.beans.Hello;
 import spring.core.session01.beans.Lotto;
 import spring.core.session01.beans.Lucky;
 import spring.core.session02.beans.Author;
+import spring.core.session02.beans.Book;
 
 // Spring Java 配置, 可以用來取代 conf/applicationContext.xml 配置
 // 宣告此類是一個配置定義
@@ -46,4 +47,12 @@ public class SpringConfig {
 		return author;
 	}
 	
+	@Bean(name = "book")
+	public Book getBook() {
+		Book book = new Book();
+		book.setName("Java");
+		book.setPrice(500);
+		book.setAuthor(getAuthor());
+		return book;
+	}
 }
