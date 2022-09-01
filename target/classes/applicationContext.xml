@@ -30,6 +30,7 @@
 	
 	<!-- session02 -->
 	<bean id="author1" class="spring.core.session02.beans.Author" />
+	
 	<bean id="author2" class="spring.core.session02.beans.Author">
 		<!-- 方法注入 -->
 		<property name="name"> <!-- name 會直接對應到 Author 的 setName() 方法 -->
@@ -42,5 +43,22 @@
 			<value>30</value>
 		</property>
 	</bean>
-			
+	
+	<bean id="author3" class="spring.core.session02.beans.Author">
+		<!-- 建構子注入 -->
+		<constructor-arg index="0" value="Mary" />
+		<constructor-arg index="1" value="F" />
+		<constructor-arg index="2" value="28" />
+	</bean>
+	
+	<!-- 簡易 p(property) 方法注入 -->
+	<bean id="author4" class="spring.core.session02.beans.Author"
+		  p:name="Helen" p:sex="F" p:age="32" />
+	
+	<!-- 簡易 c(constructor) 建構子注入 -->
+	<bean id="author5" class="spring.core.session02.beans.Author"
+		  c:name="John" c:sex="M" c:age="46" />
+	
+	
+				
 </beans>
