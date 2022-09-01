@@ -38,5 +38,10 @@ public class Author {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
+
+	@Override
+	public String toString() {
+		return "Author [name=" + name + ", sex=" + sex + ", age=" + age + "]";
+	}
 	
 }

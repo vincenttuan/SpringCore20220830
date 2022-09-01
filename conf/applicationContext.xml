@@ -20,6 +20,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- 在 Spring 中定義一個 Hello 物件 (Hello 物件未來將統一由 Spring 平台來管理) -->
+	<!-- session01 -->
 	<bean id="hello" class="spring.core.session01.beans.Hello" />
 	
 	<bean id="lotto" scope="singleton" class="spring.core.session01.beans.Lotto" />
@@ -27,4 +28,8 @@
 	
 	<bean id="lucky" scope="prototype" class="spring.core.session01.beans.Lucky" />
 	
+	<!-- session02 -->
+	<bean id="author1" class="spring.core.session02.beans.Author" />
+	
+			
 </beans>
