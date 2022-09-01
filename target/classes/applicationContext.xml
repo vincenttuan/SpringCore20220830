@@ -111,6 +111,7 @@
 	<bean id="paper3" class="spring.core.session02.beans.material.PaperRedB3" p:id="103" autowire="byName" />
 	
 	<!-- construstor 建構子自動配置 -->
+	<!-- Paper的建構子參數名稱對應到指定id名稱 -->
 	<bean id="paper4" class="spring.core.session02.beans.material.Paper" p:id="104" autowire="constructor" />
 	
 </beans>

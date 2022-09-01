@@ -10,8 +10,8 @@ public class Paper {
 		
 	}
 	
-	public Paper(Color color, Size size) {
-		this.color = color;
+	public Paper(Color red, Size size) {
+		this.color = red;
 		this.size = size;
 	}
 
