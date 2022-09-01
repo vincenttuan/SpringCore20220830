@@ -70,8 +70,16 @@
 		<property name="price">
 			<value>500</value>
 		</property>
-		<property name="author" ref="author2" />
+		<property name="author" ref="author2" /> <!-- ref 方法注入 -->
 	</bean>
+	
+	<!-- 在 book 建構子中透過 ref 來配置 author -->
+	<bean id="book3" class="spring.core.session02.beans.Book">
+		<constructor-arg index="0" value="Spring" />
+		<constructor-arg index="1" value="600" />
+		<constructor-arg index="2" ref="author3" /> <!-- ref 建構子注入 -->
+	</bean>
+	
 	
 				
 </beans>
