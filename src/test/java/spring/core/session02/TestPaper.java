@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import spring.core.session02.beans.material.Paper;
+import spring.core.session02.beans.material.PaperRedB3;
 
 public class TestPaper {
 	@Test
@@ -17,6 +18,10 @@ public class TestPaper {
 		
 		Paper paper2 = ctx.getBean("paper2", Paper.class);
 		System.out.println(paper2);
+		
+		PaperRedB3 paper3 = ctx.getBean("paper3", PaperRedB3.class);
+		System.out.println(paper3);
+		
 		
 	}
 }

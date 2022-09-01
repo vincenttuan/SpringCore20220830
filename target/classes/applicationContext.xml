@@ -108,5 +108,7 @@
 	
 	<!-- byName (根據 id) -->
 	<bean id="paper2" class="spring.core.session02.beans.material.Paper" p:id="102" autowire="byName" />
+	<bean id="paper3" class="spring.core.session02.beans.material.PaperRedB3" p:id="102" autowire="byName" />
+	
 	
 </beans>
