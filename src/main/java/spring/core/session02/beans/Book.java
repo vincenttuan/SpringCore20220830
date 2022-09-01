@@ -9,6 +9,11 @@ public class Book {
 		
 	}
 	
+	public Book(String name, Integer price) {
+		this.name = name;
+		this.price = price;
+	}
+	
 	public Book(String name, Integer price, Author author) {
 		this.name = name;
 		this.price = price;
