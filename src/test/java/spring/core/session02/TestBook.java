@@ -10,8 +10,8 @@ public class TestBook {
 	@Test
 	public void test() {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-		Book book = ctx.getBean("book", Book.class);
-		System.out.println(book);
+		Book book1 = ctx.getBean("book1", Book.class);
+		System.out.println(book1);
 		
 		Book book2 = ctx.getBean("book2", Book.class);
 		System.out.println(book2);
