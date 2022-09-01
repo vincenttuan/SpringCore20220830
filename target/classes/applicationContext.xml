@@ -88,4 +88,8 @@
 	<bean id="book5" class="spring.core.session02.beans.Book"
 		  c:name="C++" c:price="250" c:author-ref="author5" />			
 	
+	<!-- 在 book 中混用 p:author-ref, c:author-ref 來配置 author -->
+	<bean id="book6" class="spring.core.session02.beans.Book"
+		  c:name="C++" c:price="250" p:author-ref="author5" />			
+	
 </beans>
