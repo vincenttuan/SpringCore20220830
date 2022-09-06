@@ -33,10 +33,11 @@ public class TestTeacher {
 		};
 		teacher2.getSubjects()
 				.forEach(name -> {
-					Optional<Clazz> clazz = Arrays.stream(clazzs)
+					Optional<Clazz> optClazz = Arrays.stream(clazzs)
 									    .filter(cla -> cla.getName().equals(name))
 									    .findFirst();
-					System.out.printf("科目: %s 學分: %s\n", name, clazz.isPresent()?clazz.get().getCredit():"None");
+					//System.out.printf("科目: %s 學分: %s\n", name, optClazz.isPresent()?optClazz.get().getCredit():"None");
+					System.out.printf("科目: %s 學分: %d\n", name, optClazz.isPresent()?optClazz.get().getCredit():0);
 				});
 		
 	}
