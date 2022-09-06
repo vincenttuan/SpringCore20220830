@@ -13,6 +13,13 @@ public class TestTeacher {
 		Teacher teacher1 = ctx.getBean("teacher1", Teacher.class);
 		System.out.println(teacher1);
 		// 請印出 teacher1 的學生名字與該生的總學分各是多少
+		teacher1.getStudents()
+				.stream()
+				.forEach(stu -> {
+					String name = stu.getName();
+					int total = stu.getClazzs().stream().mapToInt(cla -> cla.getCredit()).sum();
+					System.out.printf("學生姓名: %s 總學分: %d\n", name, total);
+				});
 		
 	}
 }
