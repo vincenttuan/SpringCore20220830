@@ -34,6 +34,7 @@ public class TestTeacher {
 		teacher2.getSubjects()
 				.forEach(name -> {
 					Optional<Clazz> optClazz = Arrays.stream(clazzs)
+										.parallel()  // 平行處理提高執行效率
 									    .filter(cla -> cla.getName().equals(name))
 									    .findFirst();
 					//System.out.printf("科目: %s 學分: %s\n", name, optClazz.isPresent()?optClazz.get().getCredit():"None");
