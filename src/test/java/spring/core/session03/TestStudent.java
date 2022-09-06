@@ -28,5 +28,7 @@ public class TestStudent {
 				.mapToInt(stu -> stu.getClazzs().stream().mapToInt(cla -> cla.getCredit()).sum() )
 				.sum();
 		System.out.printf("學生們總共修了 %d 學分\n", total);
+		
+		
 	}
 }
