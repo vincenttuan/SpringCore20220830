@@ -34,12 +34,25 @@ public class TestTeacher {
 		teacher2.getSubjects()
 				.forEach(name -> {
 					Optional<Clazz> optClazz = Arrays.stream(clazzs)
+										//.sequential() // 循序(default)
 										.parallel()  // 平行處理提高執行效率
 									    .filter(cla -> cla.getName().equals(name))
 									    .findFirst();
 					//System.out.printf("科目: %s 學分: %s\n", name, optClazz.isPresent()?optClazz.get().getCredit():"None");
 					System.out.printf("科目: %s 學分: %d\n", name, optClazz.isPresent()?optClazz.get().getCredit():0);
 				});
+		
+		// 循序(sequential)與平行(parallel)處理若同時在一個　Stream 串流中發生, 則系統是使用 sequential 還是 parallel ?
+		// 以最後設定為準
+		System.out.println(
+				Arrays.stream(clazzs)
+				.sequential() // 循序(default)
+				.filter(cla -> cla.getName().equals("Java"))
+				.parallel()  // 平行處理提高執行效率
+				.filter(cla -> cla.getName().equals("Java"))
+				.isParallel()
+		);
+		
 		
 	}
 }
