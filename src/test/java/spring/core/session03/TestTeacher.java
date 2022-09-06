@@ -1,9 +1,13 @@
 package spring.core.session03;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import spring.core.session03.beans.Clazz;
 import spring.core.session03.beans.Teacher;
 
 public class TestTeacher {
@@ -21,7 +25,19 @@ public class TestTeacher {
 					System.out.printf("學生姓名: %s 總學分: %d\n", name, total);
 				});
 		// 請印出 teacher2 所教授的課程名稱與學分數
-		
+		Teacher teacher2 = ctx.getBean("teacher2", Teacher.class);
+		Clazz[] clazzs = {
+				ctx.getBean("clazz1", Clazz.class),
+				ctx.getBean("clazz2", Clazz.class),
+				ctx.getBean("clazz3", Clazz.class)
+		};
+		teacher2.getSubjects()
+				.forEach(name -> {
+					Optional<Clazz> clazz = Arrays.stream(clazzs)
+									    .filter(cla -> cla.getName().equals(name))
+									    .findFirst();
+					System.out.printf("科目: %s 學分: %s\n", name, clazz.isPresent()?clazz.get().getCredit():"None");
+				});
 		
 	}
 }

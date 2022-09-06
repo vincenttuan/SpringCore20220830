@@ -201,7 +201,8 @@
 	<util:list id="subjects">
 		<value>Math</value>
 		<value>English</value>
-		<value>Program</value>
+		<value>Java</value>
+		<value>Game</value>
 	</util:list>
 	
 	<util:map id="salary">
