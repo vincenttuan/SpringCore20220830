@@ -20,6 +20,8 @@ public class TestTeacher {
 					int total = stu.getClazzs().stream().mapToInt(cla -> cla.getCredit()).sum();
 					System.out.printf("學生姓名: %s 總學分: %d\n", name, total);
 				});
+		// 請印出 teacher2 所教授的課程名稱與學分數
+		
 		
 	}
 }
