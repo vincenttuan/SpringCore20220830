@@ -119,7 +119,7 @@
 		<property name="location" value="data.properties" />
 	</bean>
 	
-	<!-- 建立 Clazz 實例並使用外部資源(data.properties)來注入物件的屬性資料 -->
+	<!-- 建立 Clazz 配置實例並使用外部資源(data.properties)來注入物件的屬性資料 -->
 	<bean id="clazz1" 
 		  p:id="1" p:name="${clazz.name}" p:credit="${clazz.credit}" 
 		  class="spring.core.session03.beans.Clazz" />
@@ -132,7 +132,31 @@
 		  p:id="3" p:name="Math" p:credit="1" 
 		  class="spring.core.session03.beans.Clazz" />
 	
-	
+	<!-- 建立 Student 配置實例 1 -->
+	<bean id="student1" 
+		  p:id="1" p:name="John"
+		  class="spring.core.session03.beans.Student">
+		  <!-- Set 集合配置(配置 clazzs 選課) -->
+		  <property name="clazzs">
+		  	<set>
+		  		<ref bean="clazz1" />
+		  		<ref bean="clazz2" />
+		  		<ref bean="clazz3" />
+		  	</set>
+		  </property>
+	</bean>
+	<!-- 建立 Student 配置實例 2 -->
+	<bean id="student2" 
+		  p:id="2" p:name="Mary"
+		  class="spring.core.session03.beans.Student">
+		  <!-- Set 集合配置(配置 clazzs 選課) -->
+		  <property name="clazzs">
+		  	<set>
+		  		<ref bean="clazz1" />
+		  		<ref bean="clazz3" />
+		  	</set>
+		  </property>
+	</bean>
 	
 </beans>
 
