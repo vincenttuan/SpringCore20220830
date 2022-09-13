@@ -3,6 +3,7 @@ package spring.core.session03.mvc.repository;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import spring.core.session03.mvc.model.User;
