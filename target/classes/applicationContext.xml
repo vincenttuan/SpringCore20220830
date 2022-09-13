@@ -241,6 +241,7 @@
 	
 	<!-- 掃描配置: 自動掃描有標註 @ 的類, 並建立物件實體 -->
 	<context:component-scan base-package="spring.core.session03.mvc" />
+	
 </beans>
 
 
