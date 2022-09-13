@@ -6,9 +6,11 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component // 是一個可以被 Spring 來管理的物件
+@Scope("prototype")
 public class User { // 使用者資料模型
 	
 	@Value(value = "John") // 配置預設值 John
