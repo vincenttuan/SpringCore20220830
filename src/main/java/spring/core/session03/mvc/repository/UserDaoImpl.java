@@ -14,7 +14,7 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public void add(User user) {
-		System.out.println("加入: " + user);
+		System.out.println("Repository(Dao) - add user: " + user);
 		users.add(user);
 	}
 
