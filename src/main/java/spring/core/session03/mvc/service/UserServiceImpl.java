@@ -3,6 +3,7 @@ package spring.core.session03.mvc.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import spring.core.session03.mvc.model.User;
