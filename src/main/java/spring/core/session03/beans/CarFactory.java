@@ -17,8 +17,7 @@ public class CarFactory implements FactoryBean<Car> {
 
 	@Override
 	public Class<?> getObjectType() {
-		// TODO Auto-generated method stub
-		return null;
+		return Car.class;
 	}
 
 	@Override
