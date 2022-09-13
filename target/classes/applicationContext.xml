@@ -236,6 +236,7 @@
 		  class="spring.core.session03.beans.DBConn" />
 	
 	<!-- 利用 BeanFactory 建立實體 -->
+	<!-- 不需要另外定義 scope 屬性 -->
 	<bean id="carFactory" class="spring.core.session03.beans.CarFactory" />
 	
 </beans>
