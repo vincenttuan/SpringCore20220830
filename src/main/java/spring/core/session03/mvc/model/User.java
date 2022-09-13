@@ -5,16 +5,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component // 是一個可以被 Spring 來管理的物件
 public class User { // 使用者資料模型
 	
+	@Value(value = "John") // 配置預設值 John
 	private String username; // 姓名
+	
+	@Value(value = "18")
 	private Integer age; // 年齡
+	
+	@Value(value = "#{${nicknames: {'foo', 'bar'}}}") // 使用 Spring EL
 	private String[] nicknames; // 暱稱
+	
+	@Value(value = "#{${subjects: {'Java', 'Python'}}}")
 	private Set<String> subjects; // 專長科目
+	
+	@Value(value = "#{${scores: {100, 90}}}")
 	private List<Integer> scores; // 各科成績
+	
+	@Value(value = "#{${hobbies: {'h1': 'Program', 'h2': 'Game'}}}")
 	private Map<String, String> hobbies; // 興趣
 	
 	public String getUsername() {
