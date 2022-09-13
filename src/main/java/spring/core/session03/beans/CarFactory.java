@@ -22,7 +22,7 @@ public class CarFactory implements FactoryBean<Car> {
 
 	@Override
 	public boolean isSingleton() {
-		return true;
+		return true; // false 支援 Prototype
 	}
 	
 }
