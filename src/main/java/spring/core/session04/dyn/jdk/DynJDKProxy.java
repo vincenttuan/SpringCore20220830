@@ -26,7 +26,8 @@ public class DynJDKProxy {
 		InvocationHandler invocationHandler = (proxy, method, args) -> {
 			Object result = null;
 			// Before: 前置通知
-			System.out.printf("Before: 前置通知: %s 方法準備開始計算, 方法參數: %s\n", method.getName(), Arrays.toString(args));
+			// System.out.printf("Before: 前置通知: %s 方法準備開始計算, 方法參數: %s\n", method.getName(), Arrays.toString(args));
+			MyLogger.before(method, args);
 			try {
 				// 執行代理物件的商業方法
 				result = method.invoke(object, args);
