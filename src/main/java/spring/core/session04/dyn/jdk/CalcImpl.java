@@ -11,6 +11,7 @@ public class CalcImpl implements Calc {
 		// 商業邏輯
 		int result = x + y;
 		return result;
+		
 	}
 
 	@Override

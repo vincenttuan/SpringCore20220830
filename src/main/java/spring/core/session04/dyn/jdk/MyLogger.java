@@ -3,6 +3,7 @@ package spring.core.session04.dyn.jdk;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
+// MyLogger 就是公用邏輯(也就是切面程式: Aspect)
 public class MyLogger {
 	// Before: 前置通知(在執行業務方法前所要執行的程式)
 	public static void before(Method method, Object[] args) {

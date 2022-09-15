@@ -17,6 +17,7 @@ public class DynJDKProxyTest {
 		Calc calc = new CalcImpl();
 		System.out.println(calc.add(10, 20));
 		
+		
 		// 經過 JDK 動態代理
 		Calc calc2 = (Calc)new DynJDKProxy(new CalcImpl()).getProxy();
 		System.out.println(calc2.add(10, 20));
