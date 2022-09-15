@@ -20,7 +20,7 @@ public class CglibHelloTest {
 		// 4. 運行
 		Hello hello = (Hello)enhancer.create();
 		System.out.println(hello.sayHello("John"));
-		
+		System.out.println(hello.info());
 	}
 	
 }

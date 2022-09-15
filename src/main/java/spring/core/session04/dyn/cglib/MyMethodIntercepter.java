@@ -10,7 +10,9 @@ public class MyMethodIntercepter implements MethodInterceptor {
 
 	@Override
 	public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
-		System.out.println("請出示實聯 QRCode");
+		if(method.getName().equals("sayHello")) {
+			System.out.println("請出示實聯 QRCode");
+		}
 		return proxy.invokeSuper(obj, args);
 	}
 	
