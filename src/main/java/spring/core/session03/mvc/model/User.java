@@ -19,8 +19,8 @@ public class User { // 使用者資料模型
 	//@Value("${user.username}")
 	private String username; // 姓名
 	
-	@Value(value = "18")
-	//@Value("${user.age}")
+	//@Value(value = "18")
+	@Value("${user.age}")
 	private Integer age; // 年齡
 	
 	@Value(value = "#{${nicknames: {'foo', 'bar'}}}") // 使用 Spring EL
