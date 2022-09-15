@@ -27,9 +27,16 @@ public class DynJDKProxy {
 			Object result = null;
 			// Before: 前置通知
 			System.out.printf("Before: 前置通知: %s 方法準備開始計算, 方法參數: %s\n", method.getName(), Arrays.toString(args));
-			// 執行代理物件的商業方法
-			result = method.invoke(object, args);
-			
+			try {
+				// 執行代理物件的商業方法
+				result = method.invoke(object, args);
+			} catch (Exception e) {
+				// Exception: 例外異常通知
+				System.out.printf("Exception: 例外異常通知: %s 方法發生例外, 訊息: %s\n", method.getName(), e);
+			} finally {
+				// End: 後置通知
+				System.out.printf("End: 後置通知: %s 方法計算完成\n", method.getName());
+			}
 			return result;
 		};
 		
