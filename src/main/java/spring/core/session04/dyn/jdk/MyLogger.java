@@ -10,7 +10,12 @@ public class MyLogger {
 	}
 	
 	// Exception: 例外異常通知(在執行業務方法時生例外所要執行的程式)
-	
+	public static void throwing(Method method, Exception e) {
+		System.out.printf("Exception: 例外異常通知: %s 方法發生例外, 訊息: %s\n", method.getName(), e);
+	}
 	
 	// End: 後置通知(在執行業務方法完畢後所要執行的程式)
+	public static void end(Method method) {
+		System.out.printf("End: 後置通知: %s 方法計算完成\n", method.getName());
+	}
 }

@@ -33,10 +33,12 @@ public class DynJDKProxy {
 				result = method.invoke(object, args);
 			} catch (Exception e) {
 				// Exception: 例外異常通知
-				System.out.printf("Exception: 例外異常通知: %s 方法發生例外, 訊息: %s\n", method.getName(), e);
+				// System.out.printf("Exception: 例外異常通知: %s 方法發生例外, 訊息: %s\n", method.getName(), e);
+				MyLogger.throwing(method, e);
 			} finally {
 				// End: 後置通知
-				System.out.printf("End: 後置通知: %s 方法計算完成\n", method.getName());
+				// System.out.printf("End: 後置通知: %s 方法計算完成\n", method.getName());
+				MyLogger.end(method);
 			}
 			return result;
 		};
