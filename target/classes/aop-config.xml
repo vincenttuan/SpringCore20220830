@@ -22,6 +22,9 @@
 	<!-- 掃描配置: 自動掃描有標註 @ 的類, 並建立物件實體 -->
 	<context:component-scan base-package="spring.core.session05" />
 	
+	<!-- 設定 Spring AOP 切面自動代理 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	
 </beans>
 
 
