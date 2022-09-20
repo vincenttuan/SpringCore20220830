@@ -17,7 +17,7 @@ public class MathCalcAOPTest {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(AOPConfig.class);
 		MathCalc calc = ctx.getBean("mathCalcImpl", MathCalc.class); // 不要寫成 MathCalcImpl.class
 		// 前置通知
-		Integer result = calc.add(20, 10);
+		Integer result = calc.div(20, 0);
 		// 後置通知
 		System.out.println(result);
 		
