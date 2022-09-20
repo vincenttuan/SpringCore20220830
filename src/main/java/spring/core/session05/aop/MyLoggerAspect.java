@@ -37,7 +37,7 @@ public class MyLoggerAspect {
 	@After(value = "pt()")
 	public void afterAdvice(JoinPoint joinPoint) {
 		String methodName = joinPoint.getSignature().getName();  // 取得方法簽章的名字
-		System.out.printf("前置通知 - 方法名稱: %s\n", methodName);
+		System.out.printf("後置通知 - 方法名稱: %s\n", methodName);
 	}
 	
 	
