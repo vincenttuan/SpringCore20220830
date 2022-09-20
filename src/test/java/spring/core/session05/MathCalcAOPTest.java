@@ -16,7 +16,7 @@ public class MathCalcAOPTest {
 		//ApplicationContext ctx = new ClassPathXmlApplicationContext("aop-config.xml");
 		// Java 配置
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(AOPConfig.class);
-		MathCalc calc = ctx.getBean("mathCalcImpl", MathCalcImpl.class);
+		MathCalc calc = ctx.getBean("mathCalcImpl", MathCalc.class); // 不要寫成 MathCalcImpl.class
 		System.out.println(calc.add(20, 10));
 		System.out.println(calc.div(20, 10));
 	}
