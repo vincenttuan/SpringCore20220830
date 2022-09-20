@@ -3,9 +3,11 @@ package spring.core.session05.aop;
 import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -21,6 +23,7 @@ public class MyLoggerAspect {
 	@Pointcut(value = "execution(* spring.core.session05.aop.MathCalcImpl.div(..))") 
 	public void pt2() {}
 	
+	/*
 	// 前置通知 Advice : 執行連接點之前所要執行的程式
 	//@Before(value = "execution(public Integer spring.core.session05.aop.MathCalcImpl.add(Integer, Integer))") // 切入點表達式 Spring EL : execution(..)
 	//@Before(value = "execution(public Integer spring.core.session05.aop.MathCalcImpl.*(Integer, Integer))") // * 表示任意方法
@@ -60,5 +63,21 @@ public class MyLoggerAspect {
 		System.out.printf("異常通知 - 方法名稱: %s 發生例外: %s\n", methodName, ex);
 	}
 	
+	*/
+	
+	// 環繞通知 (功能強)
+	// 使用前注意: 啟用環繞通知時, 建議先將上述通知關閉, 比較容易閱讀執行結果
+	// 環繞通知可以改變前端所收到的結果, 也可以決定是否要執行目標方法
+	@Around(value = "pt()")
+	public Object aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
+		Object result = null;
+		// 目標方法的業務邏輯(一定要加入)
+		try {
+			result = proceedingJoinPoint.proceed();
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 }
