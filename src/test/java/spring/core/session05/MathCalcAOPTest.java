@@ -6,7 +6,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import spring.core.session05.aop.MathCalc;
-import spring.core.session05.aop.MathCalcImpl;
 
 public class MathCalcAOPTest {
 	
