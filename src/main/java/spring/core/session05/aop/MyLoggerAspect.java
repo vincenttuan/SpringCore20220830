@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class MyLoggerAspect {
 	
 	// 前置通知 Advice : 執行連接點之前所要執行的程式
-	//@Before(value = "execution(public Integer spring.core.session05.aop.MathCalcImpl.add(Integer, Integer))")
+	//@Before(value = "execution(public Integer spring.core.session05.aop.MathCalcImpl.add(Integer, Integer))") // 切入點表達式 Spring EL : execution(..)
 	@Before(value = "execution(public Integer spring.core.session05.aop.MathCalcImpl.*(Integer, Integer))")
 	public void beforeAdvice(JoinPoint joinPoint) { // joinPoint 連接點
 		String methodName = joinPoint.getSignature().getName();  // 取得方法簽章的名字
