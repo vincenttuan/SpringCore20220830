@@ -19,7 +19,8 @@ public class MathCalcAOPTest {
 		// 前置通知
 		Integer result = calc.div(20, 0);
 		// 後置通知
-		System.out.println(result);
+		// 返回通知
+		System.out.println("result = " + result);
 		
 	}
 	

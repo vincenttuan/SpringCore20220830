@@ -49,7 +49,7 @@ public class MyLoggerAspect {
 	@AfterReturning(value = "pt()", returning = "result")  // 設定將目標方法的回傳值放到 result 的變數中
 	public void afterReturningAdvice(JoinPoint joinPoint, Object result) { // result 取得目標方法的回傳值(必須搭配上面 returning = "result" 的設定)
 		String methodName = joinPoint.getSignature().getName();  // 取得方法簽章的名字
-		System.out.printf("返回通知 - 方法名稱: %s\n 該方法的回傳值: %s", methodName, result);
+		System.out.printf("返回通知 - 方法名稱: %s 該方法的回傳值: %s\n", methodName, result);
 	}
 	
 	
