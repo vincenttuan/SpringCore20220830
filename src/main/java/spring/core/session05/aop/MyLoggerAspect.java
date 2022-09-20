@@ -71,11 +71,22 @@ public class MyLoggerAspect {
 	@Around(value = "pt()")
 	public Object aroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
 		Object result = null;
-		// 目標方法的業務邏輯(一定要加入)
+		String methodName = proceedingJoinPoint.getSignature().getName();
+		Object[] args = proceedingJoinPoint.getArgs();
+		// 1. 環繞->前置通知
+		System.out.printf("環繞->前置通知 - 方法名稱: %s 方法參數: %s\n", methodName, Arrays.toString(args));
 		try {
+			// 目標方法的業務邏輯(一定要加入)
 			result = proceedingJoinPoint.proceed();
-		} catch (Throwable e) {
-			e.printStackTrace();
+			// 2. 環繞->返回通知
+			System.out.printf("環繞->返回通知 - 方法名稱: %s 該方法的回傳值: %s\n", methodName, result);
+		} catch (Throwable ex) {
+			// 3. 環繞->異常通知
+			System.out.printf("環繞->異常通知 - 方法名稱: %s 發生例外: %s\n", methodName, ex);
+			result = null; 
+		} finally {
+			// 4. 環繞->後置通知
+			System.out.printf("環繞->後置通知 - 方法名稱: %s\n", methodName);
 		}
 		return result;
 	}
