@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -52,6 +53,12 @@ public class MyLoggerAspect {
 		System.out.printf("返回通知 - 方法名稱: %s 該方法的回傳值: %s\n", methodName, result);
 	}
 	
+	// 異常通知 Advice : 可以捕獲目標方法因執行錯誤所引發的例外資料
+	@AfterThrowing(value = "pt()", throwing = "ex") // 設定將目標方法所拋出的錯誤資料放到 ex 的變數中
+	public void afterThrowingAdvice(JoinPoint joinPoint, Throwable ex) { // 搭配 throwing = "ex"
+		String methodName = joinPoint.getSignature().getName();  // 取得方法簽章的名字
+		System.out.printf("異常通知 - 方法名稱: %s 發生例外: %s\n", methodName, ex);
+	}
 	
 	
 }
