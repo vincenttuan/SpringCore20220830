@@ -25,8 +25,8 @@ public class MyLoggerAspect {
 	//@Before(value = "execution(* spring.core.session05.aop.MathCalcImpl.*(..))") // 第一個 * 表示任意修飾字與任意回傳型態
 	//@Before(value = "execution(* spring.core.session05.aop.*.*(..))") // *.* 表示 任意類.任意方法
 	//@Before(value = "execution(* *(..))") // 全部通通攔截
-	//@Before(value = "pt()")
-	@Before(value = "pt() && !pt2()") // 滿足 pt() 原則 AND 不滿足 pt2() 原則
+	@Before(value = "pt()")
+	//@Before(value = "pt() && !pt2()") // 滿足 pt() 原則 AND(&&) 不滿足(!) pt2() 原則
 	public void beforeAdvice(JoinPoint joinPoint) { // joinPoint 連接點
 		String methodName = joinPoint.getSignature().getName();  // 取得方法簽章的名字
 		Object[] args = joinPoint.getArgs(); // 方法參數
