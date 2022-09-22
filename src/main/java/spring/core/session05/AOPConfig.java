@@ -14,8 +14,7 @@ import spring.core.session05.aop_lab.Introducer;
 public class AOPConfig {
 	
 	@Bean
-	public Introducer getIntroducer() {
+	public Introducer getIntroducer() { // 配置經理人
 		return new Introducer();
-				
 	}
 }
