@@ -19,7 +19,7 @@ public class DancerAOPTest {
 			// 舞者可以轉換跑道
 			// 改行當歌手
 			System.out.println("舞者改行當歌手");
-			// dancer -> singer
+			// dancer -> 必須透過經理人(Introducer - AOP) 轉換跑道 -> singer
 			Singer singer = (Singer)dancer;
 			singer.sing();
 		}
