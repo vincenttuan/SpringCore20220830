@@ -6,8 +6,10 @@ import java.util.Optional;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import spring.core.conf.SpringJdbcConfig;
 import spring.core.session06.entity.Emp;
 import spring.core.session06.template.EmpDao;
 
@@ -16,7 +18,10 @@ public class TestEmpDao1 {
 	@Test
 	public void test() {
 		// 使用 xml 配置
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("jdbc-config.xml");
+		//ApplicationContext ctx = new ClassPathXmlApplicationContext("jdbc-config.xml");
+		// 使用 java 配置
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringJdbcConfig.class);
+		
 		EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
 		List<Map<String, Object>> emps = empDao.queryAll();
 		System.out.println(emps);
