@@ -35,8 +35,13 @@
 		<property name="password" value="${jdbc.password}" />
 		
 		<!-- options -->
-		
+		<property name="minPoolSize" value="10" />
+		<property name="maxPoolSize" value="100" />
+		<property name="initialPoolSize" value="10" />
+		<property name="maxIdleTime" value="180" /> <!-- 秒 -->
+		<property name="maxStatements" value="100" /> <!-- cache 100 sql statement, 0 表示 no cache -->
 	</bean>
+	
 	
 </beans>
 
