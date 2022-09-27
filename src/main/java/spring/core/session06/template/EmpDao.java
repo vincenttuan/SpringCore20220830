@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import spring.core.session06.entity.Emp;
+import spring.core.session06.entity.Job;
 
 // DAO: Data Access Object
 @Repository
@@ -50,6 +51,28 @@ public class EmpDao {
 	public List<Emp> queryAll3() {
 		String sql = "select eid, ename, age, createtime from emp";
 		List<Emp> emps = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Emp>(Emp.class));
+		return emps;
+	}
+	
+	// 多筆查詢: 全部查詢 III
+	public List<Emp> queryAll4() {
+		String sql = "select eid, ename, age, createtime from emp";
+		// RowMapper 逐行資料對應
+		RowMapper<Emp> rowMapper = (ResultSet rs, int rowNum) -> {
+			Emp emp = new Emp();
+			// emp 欄位
+			emp.setEid(rs.getInt("eid"));
+			emp.setEname(rs.getString("ename"));
+			emp.setAge(rs.getInt("age"));
+			emp.setCreatetime(rs.getTimestamp("createtime"));
+			// 尋找每一個 emp 有哪些 jobs
+			String sql2 = "select jid, jname, eid from job where eid = " + emp.getEid();
+			List<Job> jobs = jdbcTemplate.query(sql2, new BeanPropertyRowMapper<Job>(Job.class));
+			// 將 jobs 設定到 emp 中
+			emp.setJobs(jobs);
+			return emp;
+		};
+		List<Emp> emps = jdbcTemplate.query(sql, rowMapper);
 		return emps;
 	}
 	
