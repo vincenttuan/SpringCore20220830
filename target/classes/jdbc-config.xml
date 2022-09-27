@@ -51,7 +51,7 @@
 	<!-- named parameter jdbc template -->
 	<bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
 		<!-- 配置資料源 -->
-		<property name="dataSource" ref="dataSource" />
+		<constructor-arg ref="dataSource" />
 	</bean>
 	
 	<!-- 配置事務(transaction)管理器 transaction manager -->
