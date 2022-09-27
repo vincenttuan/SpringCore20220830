@@ -54,6 +54,15 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
+	<!-- 配置事務(transaction)管理器 transaction manager -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 配置資料源 -->	
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 啟用事務註解@驅動, 會針對事務相關的註解@進行掃描與解析 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
 </beans>
 
 
