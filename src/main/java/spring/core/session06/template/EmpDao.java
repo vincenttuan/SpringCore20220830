@@ -4,9 +4,11 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
+import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -76,5 +78,17 @@ public class EmpDao {
 		return emps;
 	}
 	
+	// 多筆查詢: 全部查詢 IV
+	public List<Emp> queryAll5() {
+		String sql = "select e.eid, e.ename, e.age, e.createtime, " + // emp
+			     "j.jid as job_jid, j.jname as job_jname, j.eid as job_eid " + // job, 要 as 加上 job_欄位名
+			     "from emp e left join job j on j.eid = e.eid";
+		// 資料提取器
+		ResultSetExtractor<List<Emp>> resultSetExtractor = JdbcTemplateMapperFactory.newInstance()
+				.addKeys("eid") // 對應 key
+				.newResultSetExtractor(Emp.class); // 要注入到的物件類
+		
+		return jdbcTemplate.query(sql, resultSetExtractor);
+	}
 	
 }
