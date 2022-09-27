@@ -81,7 +81,7 @@ public class EmpDao {
 	// 多筆查詢: 全部查詢 IV
 	public List<Emp> queryAll5() {
 		String sql = "select e.eid, e.ename, e.age, e.createtime, " + // emp
-			     "j.jid as job_jid, j.jname as job_jname, j.eid as job_eid " + // job, 要 as 加上 job_欄位名
+			     "j.jid as job_jid, j.jname as job_jname, j.eid as job_eid " + // job, 要 as 加上 資料表名_欄位名
 			     "from emp e left join job j on j.eid = e.eid";
 		// 資料提取器
 		ResultSetExtractor<List<Emp>> resultSetExtractor = JdbcTemplateMapperFactory.newInstance()
