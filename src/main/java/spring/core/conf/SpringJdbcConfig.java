@@ -44,7 +44,6 @@ public class SpringJdbcConfig {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return ds;
 	}
 	
