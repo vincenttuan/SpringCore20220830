@@ -22,7 +22,7 @@ public class SpringJdbcConfig {
 	private Environment env; // 透過 env 可以取得外部資源配置檔(如: db.properties)
 	
 	@Bean
-	public DataSource dataSpurce() {
+	public DataSource dataSource() {
 		ComboPooledDataSource ds = new ComboPooledDataSource();
 		try {
 			// basic
