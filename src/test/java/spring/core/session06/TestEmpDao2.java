@@ -16,7 +16,8 @@ public class TestEmpDao2 {
 		// 使用 xml 配置
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("jdbc-config.xml");
 		EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
-		List<Emp> emps = empDao.queryAll2();
+		//List<Emp> emps = empDao.queryAll2();
+		List<Emp> emps = empDao.queryAll3();
 		// 印出 25 歲以上
 		emps.stream()
 			.filter(e -> e.getAge() > 25)
