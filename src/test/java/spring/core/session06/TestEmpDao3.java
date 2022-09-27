@@ -16,7 +16,8 @@ public class TestEmpDao3 {
 		// 使用 xml 配置
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("jdbc-config.xml");
 		EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
-		List<Emp> emps = empDao.queryAll4();
+		//List<Emp> emps = empDao.queryAll4();
+		List<Emp> emps = empDao.queryAll5();
 		// 想要印出每個員工有哪些工作 ?
 		emps.forEach(e -> System.out.printf("name: %s jobs: %s\n", e.getEname(), e.getJobs()));
 		
