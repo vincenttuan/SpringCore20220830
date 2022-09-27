@@ -34,7 +34,8 @@ public class SpringJdbcConfig {
 			// options
 			ds.setMinPoolSize(10);
 			ds.setMaxPoolSize(100);
-			ds.setInitialPoolSize(180); // 秒
+			ds.setInitialPoolSize(10);
+			ds.setMaxIdleTime(180); // 秒
 			ds.setMaxStatements(100);
 			
 		} catch (Exception e) {
