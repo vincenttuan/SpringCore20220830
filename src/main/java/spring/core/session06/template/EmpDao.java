@@ -79,6 +79,7 @@ public class EmpDao {
 	}
 	
 	// 多筆查詢: 全部查詢 IV
+	// Emp 進行一對多的查詢
 	public List<Emp> queryAll5() {
 		String sql = "select e.eid, e.ename, e.age, e.createtime, " + // emp
 			     "j.jid as job_jid, j.jname as job_jname, j.eid as job_eid " + // job, 要 as 加上 資料表名_欄位名
@@ -88,6 +89,20 @@ public class EmpDao {
 				.addKeys("eid") // 對應 key
 				.newResultSetExtractor(Emp.class); // 要注入到的物件類
 		
+		return jdbcTemplate.query(sql, resultSetExtractor);
+	}
+	
+	// 多筆查詢: 全部查詢 V
+	// Job 進行多對一的查詢
+	public List<Job> queryJobs() {
+		String sql = "select j.jid, j.jname , j.eid, "
+				+ "e.eid as emp_eid, e.ename as emp_ename, e.age as emp_age, e.createtime as emp_createtime "
+				+ "from job j left join emp e on j.eid = e.eid";
+		// 資料提取器
+		ResultSetExtractor<List<Job>> resultSetExtractor = JdbcTemplateMapperFactory.newInstance()
+				.addKeys("jid") // 對應 key
+				.newResultSetExtractor(Job.class); // 要注入到的物件類
+				
 		return jdbcTemplate.query(sql, resultSetExtractor);
 	}
 	
