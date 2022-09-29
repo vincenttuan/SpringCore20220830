@@ -177,4 +177,22 @@ public class EmpDao {
 		return job;
 	}
 	
+	// 單筆新增 I
+	public int addOne1(String ename, Integer age) {
+		String sql = "insert into emp(ename, age) values(?, ?)";
+		int rowcount = jdbcTemplate.update(sql, ename, age);
+		return rowcount;
+	}
+	
+	// 單筆新增 II
+	public int addOne2(String ename, Integer age) {
+		String sql = "insert into emp(ename, age) values(:emp_ename, :emp_age)";
+		MapSqlParameterSource params = new MapSqlParameterSource()
+				.addValue("emp_ename", ename)
+				.addValue("emp_age", age);
+		int rowcount = namedParameterJdbcTemplate.update(sql, params);
+		return rowcount;
+	}
+	
+	
 }
