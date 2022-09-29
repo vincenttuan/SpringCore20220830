@@ -225,7 +225,18 @@ public class EmpDao {
 		return jdbcTemplate.batchUpdate(sql, pss);
 	}
 	
+	// 修改 I
+	public int updateEnameAndAgeById(Integer eid, String ename, Integer age) {
+		String sql = "update emp set ename=?, age=? where eid=?";
+		return jdbcTemplate.update(sql, ename, age, eid); // 按照 ? 放的順序放入參數
+	}
 	
+	// 修改 II
+	public int updateEmp(Emp emp) {
+		//String sql = "update emp set ename=?, age=? where eid=?";
+		//return jdbcTemplate.update(sql, emp.getEname(), emp.getAge(), emp.getEid()); // 按照 ? 放的順序放入參數
+		return updateEnameAndAgeById(emp.getEid(), emp.getEname(), emp.getAge());
+	}
 	
 }
 
