@@ -23,9 +23,6 @@ public class TestEmpDao4 {
 		emps.forEach(j -> System.out.printf("job name: %s emp name: %s\n", 
 				j.getJname(), 
 				j.getEmp().getEname() == null ? "" : j.getEmp().getEname()));
-		
-		
-		
 	}
 	
 }
