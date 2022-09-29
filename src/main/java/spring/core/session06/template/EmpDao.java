@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.simpleflatmapper.jdbc.spring.JdbcTemplateMapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -115,7 +116,15 @@ public class EmpDao {
 		//return jdbcTemplate.queryForObject(sql, args, new BeanPropertyRowMapper<Emp>(Emp.class));
 		
 		// api: queryForObject(String sql, RowMapper<T> rowMapper, @Nullable Object... args) 
-		return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Emp>(Emp.class), id);
+		//return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Emp>(Emp.class), id);
+		
+		Emp emp = null;
+		try {
+			emp = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Emp>(Emp.class), id);
+		} catch (DataAccessException e) {
+			System.out.println("查無此人: " + e);
+		}
+		return emp;
 	}
 	
 }

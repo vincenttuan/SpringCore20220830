@@ -18,7 +18,7 @@ public class TestEmpDao5 {
 		// 使用 xml 配置
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("jdbc-config.xml");
 		EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
-		Emp emp = empDao.getEmpById(1);
+		Emp emp = empDao.getEmpById(100);
 		System.out.println(emp);
 		
 	}
