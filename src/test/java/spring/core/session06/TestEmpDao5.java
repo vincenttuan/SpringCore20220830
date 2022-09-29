@@ -20,7 +20,7 @@ public class TestEmpDao5 {
 		EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
 		Emp emp = empDao.getEmpById(1, true); // (1) or (1, false) or (1, true)
 		System.out.println(emp);
-		Job job = empDao.getJobById(1);
+		Job job = empDao.getJobById(1, true);
 		System.out.println(job);
 		
 	}
