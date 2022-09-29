@@ -106,4 +106,11 @@ public class EmpDao {
 		return jdbcTemplate.query(sql, resultSetExtractor);
 	}
 	
+	// 單筆查詢: Emp
+	public Emp getEmpById(Integer id) {
+		String sql = "select eid, ename, age, createtime from emp where eid = ?";
+		Object[] args = {id};
+		return jdbcTemplate.queryForObject(sql, args, new BeanPropertyRowMapper<Emp>(Emp.class));
+	}
+	
 }
