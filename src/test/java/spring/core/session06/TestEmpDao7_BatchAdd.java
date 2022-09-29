@@ -1,5 +1,9 @@
 package spring.core.session06;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,13 +18,13 @@ public class TestEmpDao7_BatchAdd {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("jdbc-config.xml");
 		EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
 		
-		int rowcount1 = empDao.addOne1("X01", 30);
-		System.out.println(rowcount1);
-		
-		int rowcount2 = empDao.addOne1("X02", 32);
-		System.out.println(rowcount2);
-		
-		System.out.println("ADD OK");
+		List<Object[]> rows = new ArrayList<>();
+		// 放入 ename, age
+		rows.add(new Object[] {"Y01", 41});
+		rows.add(new Object[] {"Y02", 42});
+		rows.add(new Object[] {"Y03", 43});
+		int[] rowcounts = empDao.batchAdd1(rows);
+		System.out.println(Arrays.toString(rowcounts));
 	}
 	
 }
