@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
@@ -125,6 +126,21 @@ public class EmpDao {
 			System.out.println("查無此人: " + e);
 		}
 		return emp;
+	}
+	
+	// 單筆查詢: Job
+	public Job getJobById(Integer id) {
+		String sql = "select jid, jname, eid from job where jid = :job_id";
+		MapSqlParameterSource params = new MapSqlParameterSource()
+				.addValue("job_id", id);
+		
+		Job job = null;
+		try {
+			job = namedParameterJdbcTemplate.queryForObject(sql, params, new BeanPropertyRowMapper<Job>(Job.class));
+		} catch (DataAccessException e) {
+			System.out.println("查無此工作 " + e);
+		}
+		return job;
 	}
 	
 }
