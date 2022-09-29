@@ -168,7 +168,13 @@ public class EmpDao {
 	// 單筆查詢: Job
 	// 若 hasRelative = true, 則會找出該 job 所對應的 emp 物件
 	public Job getJobById(Integer id, Boolean hasRelative) {
-		return null;
+		Job job = getJobById(id);
+		if(!hasRelative) {
+			return job;
+		}
+		Emp emp = getEmpById(job.getEid());
+		job.setEmp(emp);
+		return job;
 	}
 	
 }
