@@ -109,6 +109,14 @@ public class EmpDao {
 		return jdbcTemplate.query(sql, resultSetExtractor);
 	}
 	
+	// 多筆查詢:
+	// 取得某單一員工的所有工作
+	public List<Job> queryJobsByEmpId(Integer eid) {
+		String sql = "select jid, jname, eid from job where eid = ?";
+		List<Job> jobs = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Job>(Job.class), eid);
+		return jobs;
+	}
+	
 	// 單筆查詢: Emp
 	public Emp getEmpById(Integer id) {
 		String sql = "select eid, ename, age, createtime from emp where eid = ?";
@@ -135,9 +143,8 @@ public class EmpDao {
 		if(!hasRelative) {
 			return emp;
 		}
-		// emp 需要關聯到 job * (0..*)
-		String sql = "select jid, jname, eid from job where eid = ?";
-		List<Job> jobs = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Job>(Job.class), id); // emp.getEid()
+		// 取得該員工的所有工作
+		List<Job> jobs = queryJobsByEmpId(id);
 		// 將 jobs 配置注入到 emp 物件
 		emp.setJobs(jobs);
 		return emp;
