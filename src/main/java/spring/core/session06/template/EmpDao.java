@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
 
 import spring.core.session06.entity.Emp;
@@ -109,8 +110,12 @@ public class EmpDao {
 	// 單筆查詢: Emp
 	public Emp getEmpById(Integer id) {
 		String sql = "select eid, ename, age, createtime from emp where eid = ?";
-		Object[] args = {id};
-		return jdbcTemplate.queryForObject(sql, args, new BeanPropertyRowMapper<Emp>(Emp.class));
+		// api: queryForObject(String sql, @Nullable Object[] args, RowMapper<T> rowMapper)
+		//Object[] args = {id};
+		//return jdbcTemplate.queryForObject(sql, args, new BeanPropertyRowMapper<Emp>(Emp.class));
+		
+		// api: queryForObject(String sql, RowMapper<T> rowMapper, @Nullable Object... args) 
+		return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Emp>(Emp.class), id);
 	}
 	
 }
