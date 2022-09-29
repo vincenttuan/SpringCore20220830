@@ -128,6 +128,21 @@ public class EmpDao {
 		return emp;
 	}
 	
+	// 單筆查詢: Emp
+	public Emp getEmpById(Integer id, Boolean hasRelative) {
+		Emp emp = getEmpById(id);
+		// emp 不需要關聯到 job
+		if(!hasRelative) {
+			return emp;
+		}
+		// emp 需要關聯到 job * (0..*)
+		String sql = "select jid, jname, eid from job where eid = ?";
+		List<Job> jobs = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Job>(Job.class), id); // emp.getEid()
+		// 將 jobs 配置注入到 emp 物件
+		emp.setJobs(jobs);
+		return emp;
+	}
+	
 	// 單筆查詢: Job
 	public Job getJobById(Integer id) {
 		String sql = "select jid, jname, eid from job where jid = :job_id";
