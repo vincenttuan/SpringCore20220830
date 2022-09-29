@@ -19,13 +19,23 @@ public class TestEmpDao9_Update {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("jdbc-config.xml");
 		EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
 		
-		List<Emp> emps = new ArrayList<>();
-		// 放入 emp 物件
-		emps.add(new Emp("Z01", 24));
-		emps.add(new Emp("Z02", 25));
-		emps.add(new Emp("Z03", 26));
-		int[] rowcounts = empDao.batchAdd2(emps);
-		System.out.println(Arrays.toString(rowcounts));
+		// 取得 eid = 10 的 Emp 物件
+		Emp emp = empDao.getEmpById(10);
+		if(emp == null) {
+			System.out.println("無此員工可以修改");
+			return;
+		}
+		
+		// 修改名字 = "M01", 年齡 = 23
+		emp.setEname("M01");
+		emp.setAge(23);
+		
+		int rowcount = empDao.updateEmp(emp);
+		System.out.println(rowcount);
+		
+		
+		
+		
 	}
 	
 }
