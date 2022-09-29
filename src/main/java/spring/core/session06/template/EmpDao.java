@@ -194,5 +194,11 @@ public class EmpDao {
 		return rowcount;
 	}
 	
+	// 批次(多筆)新增 I
+	public int[] batchAdd1(List<Object[]> rows) {
+		String sql = "insert into emp(ename, age) values(?, ?)";
+		return jdbcTemplate.batchUpdate(sql, rows);
+	}
+	
 	
 }
