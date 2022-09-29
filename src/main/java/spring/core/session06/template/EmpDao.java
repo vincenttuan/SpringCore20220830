@@ -238,6 +238,12 @@ public class EmpDao {
 		return updateEnameAndAgeById(emp.getEid(), emp.getEname(), emp.getAge());
 	}
 	
+	// 刪除
+	public int deleteById(Integer eid) {
+		String sql = "delete from emp where eid=?";
+		return jdbcTemplate.update(sql, eid); // 刪除一樣也是調用 update() 方法
+	}
+	
 }
 
 
