@@ -1,6 +1,7 @@
 package spring.core.session06;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -19,8 +20,17 @@ public class TestEmpDao3 {
 		//List<Emp> emps = empDao.queryAll4();
 		List<Emp> emps = empDao.queryAll5();
 		// 想要印出每個員工有哪些工作 ?
-		emps.forEach(e -> System.out.printf("name: %s jobs: %s\n", e.getEname(), e.getJobs()));
+		//emps.forEach(e -> System.out.printf("name: %s jobs: %s\n", e.getEname(), e.getJobs()));
 		
+		emps.forEach(e -> {
+			
+			String empName = e.getEname();
+			List<String> jobNames = e.getJobs().stream().map(j -> j.getJname()).collect(Collectors.toList());
+			// 移除 null
+			jobNames.remove(null);
+			System.out.printf("name: %s jobs: %s\n", empName, jobNames);
+			
+		});
 		
 	}
 	
