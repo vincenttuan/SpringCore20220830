@@ -16,8 +16,11 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import spring.core.session06.entity.Emp;
 import spring.core.session06.entity.Job;
@@ -31,6 +34,9 @@ public class EmpDao {
 	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	
+	@Autowired
+	private ComboPooledDataSource dataSource;
 	
 	// 多筆查詢: 全部查詢 I
 	public List<Map<String, Object>> queryAll() {
@@ -243,6 +249,18 @@ public class EmpDao {
 		String sql = "delete from emp where eid=?";
 		return jdbcTemplate.update(sql, eid); // 刪除一樣也是調用 update() 方法
 	}
+	
+	// 同時新增2筆資料(任何一筆失敗都會進行回滾)
+	public int[] addTwoTx(String ename1, Integer age1, String ename2, Integer age2) {
+		int[] rowcounts = new int[2];
+		// 1. 建立 TranscationManager
+		DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
+		
+		
+		
+		return rowcounts;
+	}
+	
 	
 }
 
