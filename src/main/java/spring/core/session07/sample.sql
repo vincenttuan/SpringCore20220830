@@ -1,3 +1,4 @@
+use web;
 -- tx 交易資料表
 -- book (書籍資料), stock (庫存資料), wallet (客戶雲端錢包)
 -- 建立 book (書籍資料) 表
