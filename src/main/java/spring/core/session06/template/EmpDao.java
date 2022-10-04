@@ -266,10 +266,10 @@ public class EmpDao {
 		// 4. 交易處理
 		try {
 			String sql = "insert into emp(ename, age) values(?, ?)";
-			rowcounts[0] = jdbcTemplate.update(sql, ename1, age1);
-			rowcounts[1] = jdbcTemplate.update(sql, ename2, age2);
+			rowcounts[0] = jdbcTemplate.update(sql, ename1, age1); // 已經加入資料表(若無錯誤)
+			rowcounts[1] = jdbcTemplate.update(sql, ename2, age2); // 已經加入資料表(若無錯誤)
 		} catch (Exception e) {
-			transactionManager.rollback(status); // 交易回滾
+			transactionManager.rollback(status); // 交易回滾 (會將資料表剛才加入的紀錄刪除)
 			System.out.println("新增失敗");
 			return null;
 		}
