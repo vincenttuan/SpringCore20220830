@@ -17,7 +17,7 @@ public class TestEmpDao11_Tx {
 		EmpDao empDao = ctx.getBean("empDao", EmpDao.class);
 		
 		// 新增 2 筆紀錄 (交易)
-		int[] rowscount = empDao.addTwoTx("B01", 18, "B02", 19);
+		int[] rowscount = empDao.addTwoTx("B03", 18, "B04", 19);
 		if(rowscount != null) {
 			System.out.println(Arrays.toString(rowscount));
 		}
