@@ -19,6 +19,9 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -255,9 +258,23 @@ public class EmpDao {
 		int[] rowcounts = new int[2];
 		// 1. 建立 TranscationManager
 		DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
-		
-		
-		
+		// 2. 定義 TransactionDefinition
+		DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+		def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED); // 請求一個交易
+		// 3. 交易狀態封裝(rollback, commit 時使用)
+		TransactionStatus status = transactionManager.getTransaction(def);
+		// 4. 交易處理
+		try {
+			String sql = "insert into emp(ename, age) values(?, ?)";
+			rowcounts[0] = jdbcTemplate.update(sql, ename1, age1);
+			rowcounts[1] = jdbcTemplate.update(sql, ename2, age2);
+		} catch (Exception e) {
+			transactionManager.rollback(status); // 交易回滾
+			System.out.println("新增失敗");
+			return null;
+		}
+		transactionManager.commit(status); // 交易確認
+		System.out.println("新增成功");
 		return rowcounts;
 	}
 	
