@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import spring.core.session07.tx.dao.BookDao;
+import spring.core.session07.tx.exception.InsufficientAmount;
+import spring.core.session07.tx.exception.InsufficientQuantity;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -35,7 +37,7 @@ public class BookServiceImpl implements BookService {
 			isolation = Isolation.REPEATABLE_READ,
 			timeout = 3)
 	@Override
-	public void buyOne(Integer wid, Integer bid) {
+	public void buyOne(Integer wid, Integer bid) throws InsufficientQuantity, InsufficientAmount {
 		// 1. 減去庫存
 		bookDao.updateStock(bid, 1); // 減去一本庫存
 		// 2. 減去餘額
