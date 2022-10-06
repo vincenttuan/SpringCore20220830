@@ -31,7 +31,9 @@ public class BookServiceImpl implements BookService {
 	 * Isolation.REPEATABLE_READ 可重複讀: 幻讀, 其他人不可以針對指定資料列RUD (針對欄位列)
 	 * Isolation.SERIALIZABLE 序列化: 效能低, 消耗大, 但是可以簡單解決上面的問題(實務上不建議使用) 
 	 * */
-	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.REPEATABLE_READ)
+	@Transactional(propagation = Propagation.REQUIRED, 
+			isolation = Isolation.REPEATABLE_READ,
+			timeout = 3)
 	@Override
 	public void buyOne(Integer wid, Integer bid) {
 		// 1. 減去庫存
