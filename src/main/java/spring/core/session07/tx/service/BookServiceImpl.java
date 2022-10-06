@@ -22,7 +22,6 @@ public class BookServiceImpl implements BookService {
 	 * Propagation.MANDATORY    : 當前方法必須在運行在事務中, 若沒有就拋出異常
 	 * Propagation.NEVER        : 當前方法不應該運行在事務中, 若在事務中就拋出異常
 	 * Propagation.NESTED       : 如果有事務在運行, 當前方法必須嵌套在事務中, 否則就啟動一個新事務並在自己的事務中運行
-	
 	 * */
 	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
@@ -35,3 +34,6 @@ public class BookServiceImpl implements BookService {
 	}
 	
 }
+
+
+
