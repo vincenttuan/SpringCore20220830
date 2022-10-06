@@ -35,7 +35,8 @@ public class BookServiceImpl implements BookService {
 	 * */
 	@Transactional(propagation = Propagation.REQUIRED, 
 			isolation = Isolation.REPEATABLE_READ,
-			timeout = 3)
+			timeout = 3,
+			rollbackFor = {InsufficientAmount.class, InsufficientQuantity.class})
 	@Override
 	public void buyOne(Integer wid, Integer bid) throws InsufficientQuantity, InsufficientAmount {
 		// 1. 減去庫存
