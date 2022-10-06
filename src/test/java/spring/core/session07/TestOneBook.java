@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import spring.core.session07.tx.controller.BookController;
+import spring.core.session07.tx.exception.InsufficientAmount;
+import spring.core.session07.tx.exception.InsufficientQuantity;
 
 public class TestOneBook {
 	
@@ -14,7 +16,7 @@ public class TestOneBook {
 		BookController bookController = ctx.getBean(BookController.class);
 		try {
 			bookController.buyOneBook(1, 1); // wid = 1, bid = 1
-		} catch (Exception e) {
+		} catch (InsufficientAmount | InsufficientQuantity e) {
 			System.out.println(e);
 		}
 		
